@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bucket List</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>My Epic Bucket List</h1>
+            <div class="toggle-theme">
+                <button onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+            </div>
+
+            <div class="list-section">
+                <h2>Places to Visit</h2>
+                <div class="input-area">
+                    <input type="text" id="placeInput"
+                        placeholder="Add a place...">
+                    <button
+                        onclick="addItem('placeInput', 'placesList', 'places')">Add</button>
+                </div>
+                <ul id="placesList"></ul>
+            </div>
+
+            <div class="list-section">
+                <h2>Things to be Done</h2>
+                <div class="input-area">
+                    <input type="text" id="taskInput"
+                        placeholder="Add a task...">
+                    <button
+                        onclick="addItem('taskInput', 'tasksList', 'tasks')">Add</button>
+                </div>
+                <ul id="tasksList"></ul>
+            </div>
+        </div>
+
+        <audio id="addSound"
+            src="https://assets.mixkit.co/sfx/preview/mixkit-cool-interface-click-1112.mp3"></audio>
+
+        <script src="script.js"></script>
+    </body>
+</html>
