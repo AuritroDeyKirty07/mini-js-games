@@ -1,15 +1,65 @@
+const clockElement = document.getElementById("clock");
+const timezoneSelect = document.getElementById("timezoneSelect");
+const themeToggle = document.getElementById("themeToggle");
 
-function timer(){
-    const time = new Date();
-    let hours = time.getHours();
-    const meridian = hours >=12 ? "PM": "AM";
-    hours = hours % 12 || 12;
-    hours = hours.toString().padStart(2, 0);
-    const minutes = time.getMinutes().toString().padStart(2, 0);
-    const seconds = time.getSeconds().toString().padStart(2, 0);
-    const textstring = `${hours}:${minutes}:${seconds} ${meridian}`;
-    document.getElementById("clock").textContent = textstring;
+let is24Hour = false;
+let selectedTimezone = timezoneSelect.value;
+
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeToggle.textContent = "☀️";
 }
 
-timer();
-setInterval(timer, 1000);
+function updateClock() {
+    const time = new Date().toLocaleString("en-US", {
+        timeZone: selectedTimezone
+    });
+
+    const dateObj = new Date(time);
+
+    let hours = dateObj.getHours();
+    const minutes = dateObj.getMinutes().toString().padStart(2, "0");
+    const seconds = dateObj.getSeconds().toString().padStart(2, "0");
+
+    let meridian = "";
+
+    if (!is24Hour) {
+        meridian = hours >= 12 ? " PM" : " AM";
+        hours = hours % 12 || 12;
+    }
+
+    hours = hours.toString().padStart(2, "0");
+
+    clockElement.textContent = `${hours}:${minutes}:${seconds}${meridian}`;
+
+    clockElement.classList.add("tick");
+    setTimeout(() => clockElement.classList.remove("tick"), 150);
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+// Toggle 12/24 format
+clockElement.addEventListener("click", () => {
+    is24Hour = !is24Hour;
+});
+
+// Change timezone
+timezoneSelect.addEventListener("change", (e) => {
+    selectedTimezone = e.target.value;
+    updateClock();
+});
+
+// Theme toggle
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+
+    if (document.body.classList.contains("light")) {
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "light");
+    } else {
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "dark");
+    }
+});

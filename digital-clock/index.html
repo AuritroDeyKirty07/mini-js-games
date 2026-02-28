@@ -4,12 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+</body>
+</html><body>
+
+    <div id="controls">
+        <select id="timezoneSelect">
+            <option value="Asia/Kolkata">India (IST)</option>
+            <option value="UTC">UTC</option>
+            <option value="America/New_York">New York</option>
+            <option value="Europe/London">London</option>
+            <option value="Asia/Tokyo">Tokyo</option>
+        </select>
+
+        <button id="themeToggle">🌙</button>
+    </div>
+
     <div id="clock-container">
         <div id="clock">00:00:00</div>
     </div>
+
     <script src="script.js"></script>
 </body>
-</html>
