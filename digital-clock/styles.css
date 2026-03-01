@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: monospace;
+    background: linear-gradient(125deg, #1f2937, #111827);
+    color: white;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.light {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    color: #111827;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+#timezoneSelect {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+#themeToggle {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #3b82f6;
+    color: white;
+}
+
+#clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#clock {
+    font-size: 5rem;
+    padding: 30px 60px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+body.light #clock {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.tick {
+    transform: scale(1.05);
+}
